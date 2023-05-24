@@ -6,15 +6,29 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 
+// // method 1
+// function reverse(str) {
+//   // turn string into array
+//   const resArray = str.split("");
+
+//   // reverse the array
+//   resArray.reverse();
+
+//   // return the joined string
+//   return resArray.join("");
+// }
+
+// method 2
 function reverse(str) {
-  // turn string into array
-  const resArray = str.split("");
 
-  // reverse the array
-  resArray.reverse();
+  // for each character in the string, add to the new string, starting from last char index 
+  let result = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i];
+  }
 
-  // return the joined string
-  return resArray.join("");
+  return result;
 }
+
 
 module.exports = reverse;
