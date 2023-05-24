@@ -30,21 +30,26 @@
 //   return result;
 // }
 
-// method 3
+// // method 3
+// function reverse(str) {
+
+//   // for each character in the string, take the char and add it to the start of the new string
+//   let result = "";
+//   for (let char of str) {
+//     result = char + result;
+//   }
+
+//   return result;
+// }
+
+// method 4
 function reverse(str) {
-
-  // for each character in the string, take the char and add it to the start of the new string
-  let result = "";
-  for (let char of str) {
-    result = char + result;
-  }
-
-  return result;
+  // split string to become array
+  // reduce the array to single value (string) 
+  return str.split('').reduce((reversed, character) => {
+    return character + reversed;
+  }, '');
 }
-
-
-
-
 
 
 module.exports = reverse;
