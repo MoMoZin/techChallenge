@@ -16,11 +16,18 @@
 //   return str === reversed;
 // }
 
-//method two
-function palindrome(str) {
-  const reversed = str.split("").reverse().join("");
+// //method two
+// function palindrome(str) {
+//   const reversed = str.split("").reverse().join("");
 
-  return str === reversed;
+//   return str === reversed;
+// }
+
+//method three
+function palindrome(str) {
+  return str.split("").every((char, i) => {
+    return char === str[str.length - i - 1];
+  });
 }
 
 module.exports = palindrome;
