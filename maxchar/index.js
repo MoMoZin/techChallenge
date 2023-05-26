@@ -13,12 +13,14 @@
 function maxChar(str) {
   let charObj = {};
   str.split("").forEach(char => {
-    if (!charObj[char]) {
-      charObj[char] = 1;
-    }
-    else {
-      charObj[char] += 1;
-    }
+    // if (!charObj[char]) {
+    //   charObj[char] = 1;
+    // }
+    // else {
+    //   charObj[char] += 1;
+    // }
+    // charObj[char] = !charObj[char] ? 1 : +1;
+    charObj[char] = charObj[char] + 1 || 1;
   });
   let maxCount = 0;
   let result = "";
