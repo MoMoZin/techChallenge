@@ -53,40 +53,50 @@
 
 // }
 
+// //method 2
+// function anagrams(stringA, stringB) {
 
+//   //remove space and ! from both string and change to lowercase
+//   stringA = stringA.replace(/[^\w]/g, '').toLowerCase();
+//   stringB = stringB.replace(/[^\w]/g, '').toLowerCase();
+
+//   //if two strings length is not the same, it is not anagram for sure
+//   if (stringA.length !== stringB.length) {
+//     return false;
+//   }
+
+//   //create char map of stringA
+//   const stringAObj = createCharMap(stringA);
+
+//   //create char map of stringB
+//   const stringBObj = createCharMap(stringB);
+
+//   //loop through stringAobj and check if each char exists in stringBobj as well
+//   for (let charA in stringAObj) {
+//     if (stringAObj[charA] !== stringBObj[charA]) {
+//       return false;
+//     }
+//   }
+//   return true;
+
+// }
+// //helper function to create char map multiple times
+// const createCharMap = (str) => {
+//   const charMap = {};
+//   str.split("").forEach(char => {
+//     charMap[char] = charMap[char] + 1 || 1;
+//   });
+//   return charMap;
+// };
+
+
+//method 3
 function anagrams(stringA, stringB) {
-
-  //remove space and ! from both string and change to lowercase
-  stringA = stringA.replace(/[^\w]/g, '').toLowerCase();
-  stringB = stringB.replace(/[^\w]/g, '').toLowerCase();
-
-  //if two strings length is not the same, it is not anagram for sure
-  if (stringA.length !== stringB.length) {
-    return false;
-  }
-
-  //create char map of stringA
-  const stringAObj = createCharMap(stringA);
-
-  //create char map of stringB
-  const stringBObj = createCharMap(stringB);
-
-  //loop through stringAobj and check if each char exists in stringBobj as well
-  for (let charA in stringAObj) {
-    if (stringAObj[charA] !== stringBObj[charA]) {
-      return false;
-    }
-  }
-  return true;
-
+  return cleanString(stringA) === cleanString(stringB);
 }
-//helper function to create char map multiple times
-const createCharMap = (str) => {
-  const charMap = {};
-  str.split("").forEach(char => {
-    charMap[char] = charMap[char] + 1 || 1;
-  });
-  return charMap;
+
+const cleanString = (str) => {
+  return str.replace(/[^\w]/g, '').toLowerCase().split("").sort().join();
 };
 
 
