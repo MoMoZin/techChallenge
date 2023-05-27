@@ -40,28 +40,43 @@
 
 
 
-//method 2
+// //method 2
+// function chunk(array, size) {
+
+//   //create empty array to hold inner arrays
+//   let outerArr = [];
+//   //for each element in outer array
+//   array.forEach(eleement => {
+//     //retrieve last element from outer array
+//     const lastInnerElement = outerArr[outerArr.length - 1];
+
+//     //if no last inner element (first time) or last inner element size is full
+//     if (!lastInnerElement || lastInnerElement.length === size) {
+//       //create new inner element and push it to outer array
+//       outerArr.push([eleement]);
+//     }
+//     else {
+//       //push current array to last inner element
+//       lastInnerElement.push(eleement);
+//     }
+//   });
+
+//   return outerArr;
+// }
+
+
+//method 3
 function chunk(array, size) {
 
-  //create empty array to hold inner arrays
-  let outerArr = [];
-  //for each element in outer array
-  array.forEach(eleement => {
-    //retrieve last element from outer array
-    const lastInnerElement = outerArr[outerArr.length - 1];
+  const chunked = [];
+  let index = 0;
 
-    //if no last inner element (first time) or last inner element size is full
-    if (!lastInnerElement || lastInnerElement.length === size) {
-      //create new inner element and push it to outer array
-      outerArr.push([eleement]);
-    }
-    else {
-      //push current array to last inner element
-      lastInnerElement.push(eleement);
-    }
-  });
+  while (index < array.length) {
+    chunked.push(array.slice(index, index + size));
+    index += size;
+  }
 
-  return outerArr;
+  return chunked;
 }
 
 module.exports = chunk;
