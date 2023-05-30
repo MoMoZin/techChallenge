@@ -22,6 +22,7 @@
 
 //   // recursive attempt without space
 //   // // console.log("Current n: ", n);
+//  //basecase
 //   // if (n === 1) {
 //   //   console.log("#");
 //   //   return;
@@ -39,6 +40,21 @@
 //   // }
 //   // console.log('n: ', n);
 
+// // recursive refactored
+// if (n === 0) {
+//   return;
+// }
+
+// steps(n - 1);
+
+// let output = "";
+// for (let i = 1; i <= n; i++) {
+//   output += '#';
+// }
+
+// console.log(output);
+
+// normal method
 //   if (n === 1) {
 //     console.log("#");
 //     return;
@@ -61,30 +77,50 @@
 //   });
 // }
 
-// Method 1
-function steps(n) {
+// // Method 1
+// function steps(n) {
 
-  //    C0  C1  C2 
-  // R0  #   -   -
-  // R1  #   #   -
-  // R2  #   #   #
+//   //    C0  C1  C2 
+//   // R0  #   -   -
+//   // R1  #   #   -
+//   // R2  #   #   #
 
-  for (let row = 0; row < n; row++) {
-    let stair = '';
+//   for (let row = 0; row < n; row++) {
+//     let stair = '';
 
-    //if current column is equal to or less than the current row, add #, otherwise add space
-    for (let col = 0; col < n; col++) {
-      if (col <= row) {
-        stair += "#";
-      }
-      else {
-        stair += " ";
-      }
-    }
+//     //if current column is equal to or less than the current row, add #, otherwise add space
+//     for (let col = 0; col < n; col++) {
+//       if (col <= row) {
+//         stair += "#";
+//       }
+//       else {
+//         stair += " ";
+//       }
+//     }
 
-    //print the result
-    console.log(stair);
+//     //print the result
+//     console.log(stair);
+//   }
+
+// }
+
+// Method 2
+function steps(n, row = 0, stair = '') {
+  if (n === row) {
+    return;
   }
+
+  if (n === stair.length) {
+    //print the finished row 
+    console.log(stair);
+    //calling recursive to go to next row
+    return steps(n, row + 1);
+  }
+
+  stair += stair.length <= row ? "#" : " ";
+
+  //calling recursive to add # or space to current row
+  steps(n, row, stair);
 
 }
 
