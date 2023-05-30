@@ -63,8 +63,16 @@
 
 // Method 1
 function steps(n) {
+
+  //    C0  C1  C2 
+  // R0  #   -   -
+  // R1  #   #   -
+  // R2  #   #   #
+
   for (let row = 0; row < n; row++) {
     let stair = '';
+
+    //if current column is equal to or less than the current row, add #, otherwise add space
     for (let col = 0; col < n; col++) {
       if (col <= row) {
         stair += "#";
@@ -73,6 +81,8 @@ function steps(n) {
         stair += " ";
       }
     }
+
+    //print the result
     console.log(stair);
   }
 
