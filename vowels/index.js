@@ -20,17 +20,23 @@
 //   return count;
 // }
 
-// Method 2
-function vowels(str) {
-  const vowels = ['a', 'e', 'i', 'o', 'u'];
-  let count = str.toLowerCase().split("").reduce((prev, curr) => {
-    if (vowels.includes(curr)) {
-      prev++;
-    }
-    return prev;
-  }, 0);
+// // Method 2
+// function vowels(str) {
+//   const vowels = ['a', 'e', 'i', 'o', 'u'];
+//   let count = str.toLowerCase().split("").reduce((prev, curr) => {
+//     if (vowels.includes(curr)) {
+//       prev++;
+//     }
+//     return prev;
+//   }, 0);
 
-  return count;
+//   return count;
+// }
+
+// Method 3
+function vowels(str) {
+  const matches = str.match(/[aeiou]/gi);
+  return matches ? matches.length : 0;
 }
 
 
